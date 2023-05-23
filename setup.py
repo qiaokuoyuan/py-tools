@@ -18,7 +18,7 @@ URL = 'https://github.com/qiaokuoyuan/py-tools'
 EMAIL = '457361577@qq.com'
 AUTHOR = 'qiaokuoyuan'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.3.0'
+VERSION = '0.4.0'
 
 # What packages are required for this module to be executed?
 REQUIRED = [

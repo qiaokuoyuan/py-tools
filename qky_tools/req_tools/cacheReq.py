@@ -9,6 +9,7 @@ def mongo_cache_request_and_pack(request_action: typing.Callable,
                                  query: typing.Dict,
                                  save_key: typing.Dict,
                                  fail_action: typing.Callable = None,
+                                 request_success_action: typing.Callable = None,
                                  mongo_cache_request_id_name='request_id',
                                  mongo_cache_response_name='response',
                                  mongo_cache_timestamp_name='claw_date',
@@ -28,6 +29,9 @@ def mongo_cache_request_and_pack(request_action: typing.Callable,
             if r and is_success(r):
                 request_id = nanoid.generate()
 
+                if request_success_action:
+                    request_success_action(r)
+
                 save_key.update({
                     mongo_cache_timestamp_name: datetime.datetime.now(),
                     mongo_cache_request_id_name: request_id,
@@ -41,6 +45,7 @@ def mongo_cache_request_and_pack(request_action: typing.Callable,
                                                     query=query,
                                                     save_key=save_key,
                                                     fail_action=fail_action,
+                                                    request_success_action=request_success_action,
                                                     mongo_cache_request_id_name=mongo_cache_request_id_name,
                                                     mongo_cache_response_name=mongo_cache_response_name,
                                                     mongo_cache_timestamp_name=mongo_cache_timestamp_name,
@@ -52,6 +57,7 @@ def mongo_cache_request_and_pack(request_action: typing.Callable,
             return mongo_cache_request_and_pack(request_action=request_action,
                                                 is_success=is_success,
                                                 mongo_collection=mongo_collection,
+                                                request_success_action=request_success_action,
                                                 query=query,
                                                 save_key=save_key,
                                                 fail_action=fail_action,
