@@ -50,6 +50,8 @@ def mongo_cache_request_and_pack(request_action: typing.Callable,
                                                     mongo_cache_response_name=mongo_cache_response_name,
                                                     mongo_cache_timestamp_name=mongo_cache_timestamp_name,
                                                     try_times=try_times)
+            else:
+                raise "请求失败"
         except Exception as e:
             if fail_action:
                 fail_action()

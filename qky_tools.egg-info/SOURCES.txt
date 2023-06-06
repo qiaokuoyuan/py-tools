@@ -12,3 +12,5 @@ qky_tools/db_tools/__init__.py
 qky_tools/req_tools/__init__.py
 qky_tools/req_tools/cacheReq.py
 qky_tools/req_tools/proxyReq.py
+qky_tools/str_tools/__init__.py
+qky_tools/str_tools/chinese_tools.py
